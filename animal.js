@@ -1,31 +1,43 @@
 class Animal {
     constructor() {
-        this.x = random(0, width)
-        this.y = random(0, height)
-        this.health = random(0, 100)
+        this.x = random(5, width-5)
+        this.y = random(5, height-5)
+        //tweak health 
+        this.health = randomGaussian(80, 5)
         console.log(this.health)
     }
 
     show() {
-        fill(255)
+        fill(this.color)
         rect(this.x, this.y, this.size, this.size)
-        fill(100)
-        text('1', this.x, this.y)
     }
 
     moveManual() {
-        if (keyIsDown(UP_ARROW)){
+        if (keyIsDown(UP_ARROW)) {
             //console.log('up')
             this.y -= this.speed
-        }else if (keyIsDown(DOWN_ARROW)){
+        } else if (keyIsDown(DOWN_ARROW)) {
             //console.log('down')
             this.y += this.speed
-        }else if (keyIsDown(RIGHT_ARROW)){
+        } else if (keyIsDown(RIGHT_ARROW)) {
             //console.log('Working')
             this.x += this.speed
-        }else if (keyIsDown(LEFT_ARROW)){
+        } else if (keyIsDown(LEFT_ARROW)) {
             //console.log('Working')
             this.x -= this.speed
+        }
+    }
+
+    eat(food) {
+            if (dist(this.x, this.y, food.x, food.y) < 20) {
+            //console.log('eating')
+            if (this.health += food.nutrition > 100){
+                this.health = 100
+            } else{
+                this.health += food.nutrition
+            }
+            food.x = food.y = null
+            console.error(this.health)
         }
     }
 }

@@ -1,12 +1,13 @@
 class Food {
     constructor(){
-        this.nutriton = random(0, 100)
-        this.x = random(0, width)
-        this.y = random(0, height)
+        //tweak nutrition 
+        this.nutrition = randomGaussian(5,2)
+        this.x = random(5, width-5)
+        this.y = random(5, height-5)
     }
 
     show(){
-        fill(255)
+        fill('green')
         rect(this.x, this.y, 10,10)
     }
 }
