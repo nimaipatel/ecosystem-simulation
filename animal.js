@@ -8,8 +8,8 @@ class Animal {
     }
 
     show() {
-        fill(this.color)
-        rect(this.x, this.y, this.size, this.size)
+        textSize(this.size)
+        text(this.emoji, this.x, this.y)
     }
 
     moveManual() {

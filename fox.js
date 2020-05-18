@@ -1,8 +1,8 @@
 class Fox extends Animal {
     constructor() {
         super()
-        this.color = 'orange'
-        this.size = 20
+        this.emoji = '🦊'
+        this.size = 26
         this.speed = 9
     }
 }
