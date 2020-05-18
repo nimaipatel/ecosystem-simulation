@@ -1,0 +1,19 @@
+{
+  "name": "ecosystem-simulation",
+  "version": "1.0.0",
+  "description": "Ecosystem Simulation Project",
+  "main": "simulation.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nimainimaii/EcosystemSimulation.git"
+  },
+  "author": "Nimai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nimainimaii/EcosystemSimulation/issues"
+  },
+  "homepage": "https://github.com/nimainimaii/EcosystemSimulation#readme"
+}
