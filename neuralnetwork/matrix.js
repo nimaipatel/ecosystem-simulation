@@ -69,6 +69,9 @@ class Matrix {
 
 }
 
+
+
+//tests//
 matrix = Matrix.arrayToMatrix([1, 2, 3, 4, 5, 6], 3, 2)
 console.log(matrix)
 console.log(matrix.reshape(2,3))
