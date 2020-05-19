@@ -85,10 +85,22 @@ class Matrix {
         return Matrix.arrayToMatrix(array, rows, cols)
     }
 
-}
+    static multiply(m1, m2){
+        if(m1.cols !== m2.rows){
+            throw Error("Columns of first matrix must match rows of second matrix")
+        }else{
+            let prod = new Matrix(m1.rows, m2.cols)
+            for (let i=0; i<m1.rows; i++){
+                for(let j=0; j<m2.cols; j++){
+                    prod.elements[i][j] = 0
+                    for (let k=0; k<m1.cols; k++){
+                        prod.elements[i][j] += m1.elements[i][k]*m2.elements[k][j]
+                    }
+                }
+            }
+            return prod
+        }
+    }
 
-let m = Matrix.arrayToMatrix([1,2,3,4,5,6], 2,3)
-console.log(m.elements)
-t = m.transpose()
-console.log(t.elements)
+}
 
