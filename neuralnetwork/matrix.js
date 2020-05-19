@@ -18,18 +18,18 @@ class Matrix {
         return duplicate
     }
 
-    fillRandom(){
-        for(let i=0; i<this.rows; i++){
-            for(let j=0; j<this.cols; j++){
+    fillRandom() {
+        for (let i = 0; i < this.rows; i++) {
+            for (let j = 0; j < this.cols; j++) {
                 this.elements[i][j] = Math.random()
             }
         }
     }
 
-    transpose(){
+    transpose() {
         let transpose = new Matrix(this.cols, this.rows)
-        for (let i = 0; i< this.cols; i++){
-            for(let j=0; j< this.rows; j++){
+        for (let i = 0; i < this.cols; i++) {
+            for (let j = 0; j < this.rows; j++) {
                 transpose.elements[i][j] = this.elements[j][i]
             }
         }
@@ -75,26 +75,39 @@ class Matrix {
         return array
     }
 
-    flatten(){
+    flatten() {
         return Matrix.arrayToMatrix(this.matrixToArray())
     }
 
-    reshape(rows, cols){
+    reshape(rows, cols) {
         //flatten to an array, could probably be done cleaner but im lazy lolz
         let array = this.matrixToArray()
         return Matrix.arrayToMatrix(array, rows, cols)
     }
 
-    static multiply(m1, m2){
-        if(m1.cols !== m2.rows){
+    add(other) {
+        if (this.cols !== this.cols || this.rows !== this.cols) {
+            throw Error("Shapes of matrices that you are trying to add don't match")
+        } else {
+            for (let i = 0; i < this.rows; i++) {
+                for (let j = 0; j < this.rows; j++) {
+                    this.elements[i][j] += other.elements[i][j]
+                }
+            }
+
+        }
+    }
+
+    static multiply(m1, m2) {
+        if (m1.cols !== m2.rows) {
             throw Error("Columns of first matrix must match rows of second matrix")
-        }else{
+        } else {
             let prod = new Matrix(m1.rows, m2.cols)
-            for (let i=0; i<m1.rows; i++){
-                for(let j=0; j<m2.cols; j++){
+            for (let i = 0; i < m1.rows; i++) {
+                for (let j = 0; j < m2.cols; j++) {
                     prod.elements[i][j] = 0
-                    for (let k=0; k<m1.cols; k++){
-                        prod.elements[i][j] += m1.elements[i][k]*m2.elements[k][j]
+                    for (let k = 0; k < m1.cols; k++) {
+                        prod.elements[i][j] += m1.elements[i][k] * m2.elements[k][j]
                     }
                 }
             }
