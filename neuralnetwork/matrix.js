@@ -18,6 +18,24 @@ class Matrix {
         return duplicate
     }
 
+    fillRandom(){
+        for(let i=0; i<this.rows; i++){
+            for(let j=0; j<this.cols; j++){
+                this.elements[i][j] = Math.random()
+            }
+        }
+    }
+
+    transpose(){
+        let transpose = new Matrix(this.cols, this.rows)
+        for (let i = 0; i< this.cols; i++){
+            for(let j=0; j< this.rows; j++){
+                transpose.elements[i][j] = this.elements[j][i]
+            }
+        }
+        return transpose
+    }
+
     static arrayToMatrix(array, rows, cols) {
 
         if (!rows) rows = array.length
@@ -69,10 +87,8 @@ class Matrix {
 
 }
 
+let m = Matrix.arrayToMatrix([1,2,3,4,5,6], 2,3)
+console.log(m.elements)
+t = m.transpose()
+console.log(t.elements)
 
-
-//tests//
-matrix = Matrix.arrayToMatrix([1, 2, 3, 4, 5, 6], 3, 2)
-console.log(matrix)
-console.log(matrix.reshape(2,3))
-console.log(matrix.flatten())
