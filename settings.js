@@ -3,15 +3,21 @@ let stopButton = document.getElementById('stop')
 
 let foxesInput = document.getElementById('foxes')
 let rabbitsInput = document.getElementById('rabbits')
-let carrotsInput = document.getElementById('carrots')
+let foodsInput = document.getElementById('foods')
+
+foxesInput.value = 5
 
 startButton.addEventListener("click", () =>{
     running = true
-    //console.log(running)
+    //numberOfFoxes = foxesInput.value
+    //numberOfRabbits = rabbitsInput.value
+    loop()
 })
 
 stopButton.addEventListener("click", () =>{
     running = false
     //console.log(running)
 })
+
+
 
