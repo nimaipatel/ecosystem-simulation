@@ -1,0 +1,34 @@
+body{
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+}
+
+#app{
+    display: grid;
+    grid-template-areas: 
+        "controls sketch";
+}
+
+#controls{
+    width: 300px;
+    background-color: black;
+}
+
+#settings{
+    height: 80%;
+    background-color: blue;
+}
+
+#nn{
+    height: 20%;
+    background: grey;
+}
+
+
+
+
+
+
+
