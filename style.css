@@ -1,29 +1,26 @@
 body{
-    margin: 0;
-    padding: 0;
-
-    display: flex;
+    margin:0;
+    padding:0;
 }
 
 #app{
     display: grid;
     grid-template-areas: 
-        "controls sketch";
+        'controls sketch';
+}
+
+#sketch{
+    grid-area: sketch;
+}
+
+canvas{
+    display: block;
 }
 
 #controls{
+    grid-area: controls;
+    background-color: aqua;
     width: 300px;
-    background-color: black;
-}
-
-#settings{
-    height: 80%;
-    background-color: blue;
-}
-
-#nn{
-    height: 20%;
-    background: grey;
 }
 
 

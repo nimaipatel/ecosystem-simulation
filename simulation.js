@@ -6,9 +6,12 @@ let numberOfFoxes = 1
 let numberOfFoods = 10
 
 function setup() {
+    rectMode(CENTER)
     colorMode(HSB, 360, 100, 100)
-    let canvas = createCanvas(windowWidth, windowHeight);
-    canvas.parent("sketch")
+
+    let canvas = createCanvas(windowWidth - 300, windowHeight);
+    canvas.parent('sketch')
+    
     for (let i = 0; i < numberOfRabbits; i++) {
         rabbits[i] = new Rabbit()
     }
