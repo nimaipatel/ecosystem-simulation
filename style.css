@@ -50,6 +50,7 @@ canvas{
 }
 
 input{
+    font-family: 'Roboto Mono', monospace;
     background-color: beige;
     font-size: 23px;
     height: 50px;
