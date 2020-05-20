@@ -4,12 +4,22 @@ class Animal {
         this.y = random(5, height-5)
         this.maxHealth = randomGaussian(80, 5)
         this.health = this.maxHealth*0.8
-        console.log(this.health)
+        //console.log(this.health)
     }
 
     show() {
+        textAlign(CENTER)
         textSize(this.size)
         text(this.emoji, this.x, this.y)
+
+        //strokeWeight(0)
+        fill(51)
+        rect(this.x, this.y + 10, 50, 5, 5)
+        
+        //strokeWeight(0)
+        fill(90.5, 100, 49.4)
+        rect(this.x - 25 * (1 - this.health/this.maxHealth), this.y + 10, 50 * this.health/this.maxHealth, 5, 5)
+
     }
 
     moveManual() {
