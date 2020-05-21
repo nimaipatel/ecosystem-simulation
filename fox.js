@@ -5,4 +5,9 @@ class Fox extends Animal {
         this.speed = 5
         this.speed = 9
     }
+
+    remove(){
+        let index = foxes.indexOf(this)
+        foxes.splice(index, 1)
+    }
 }

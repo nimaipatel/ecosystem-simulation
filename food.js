@@ -12,4 +12,9 @@ class Food {
         textSize(this.size)
         text(this.emoji, this.x, this.y)
     }
+
+    remove(){
+        let index = foods.indexOf(this)
+        foods.splice(index, 1)
+    }
 }
