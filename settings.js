@@ -5,17 +5,15 @@ let foxesInput = document.getElementById('foxes')
 let rabbitsInput = document.getElementById('rabbits')
 let foodsInput = document.getElementById('foods')
 
-foxesInput.value = 5
-
 startButton.addEventListener("click", () =>{
-    running = true
+    initialize()
+    console.log("ran init")
     //numberOfFoxes = foxesInput.value
     //numberOfRabbits = rabbitsInput.value
-    loop()
 })
 
 stopButton.addEventListener("click", () =>{
-    running = false
+    //= false
     //console.log(running)
 })
 
