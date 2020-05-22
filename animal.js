@@ -1,33 +1,40 @@
 class Animal {
-    constructor() {
-        this.x = random(5, width - 5)
-        this.y = random(5, height - 5)
-        this.maxHealth = randomGaussian(80, 5)
+    constructor(x, y, maxHealth, radiusOfVision) {
+        this.x = random(5, width - 5) || x
+        this.y = random(5, height - 5) || y
+        this.maxHealth = randomGaussian(80, 5) || maxHealth
         this.health = this.maxHealth * 0.8
-        this.radiusOfVision = randomGaussian(width/4, 5)
-        //console.log(this.health)
+        this.radiusOfVision = randomGaussian((width + height) / 8, 5) || radiusOfVision
+        this.timeSinceMated = 0
+        // this.fitness = this.maxHealth * 100 / 80 + this.radiusOfVision * 100 / width
+        // this.chromosome = {
+        //     maxHealth: this.maxHealth,
+        //     radiusOfVision: this.radiusOfVision,
+        //     fitness: this.fitness
+        // }
     }
 
     show() {
         strokeWeight(0)
-        fill(51, 100, 100, 0.4)
+        fill(51, 100, 100, 0.1)
         circle(this.x, this.y, this.radiusOfVision * 2)
 
         textAlign(CENTER)
         textSize(this.size)
+        fill(51, 100, 100, 1)
         text(this.emoji, this.x, this.y)
 
         strokeWeight(0.5)
         fill(51)
-        rect(this.x, this.y + 10, 25, 5, 5)
+        rect(this.x, this.y + 10, 25, 5, 5, 5, 5)
 
         strokeWeight(0.5)
         fill(90.5, 100, 49.4)
-        rect(this.x - 25 * (1 - this.health / this.maxHealth), this.y + 10, 25 * this.health / this.maxHealth, 5, 5)
+        rect(this.x - 25 * (1 - this.health / this.maxHealth), this.y + 10, 25 * this.health / this.maxHealth, 5, 5, 5, 5)
     }
 
     findClosest(foods) {
-        if (!foods.length) {
+        if (foods.length === 0) {
             return null
         } else {
             let closest = foods[0]
@@ -54,6 +61,7 @@ class Animal {
         } else {
             this.moveNoThink()
         }
+        //this.health -= 0.1
     }
 
     moveTowards(food) {
@@ -64,6 +72,7 @@ class Animal {
         } else {
             this.moveNoThink()
         }
+        //this.health -= 0.1
     }
 
     eat(food) {
@@ -97,4 +106,8 @@ function angleBetween(x2, y2, x1, y1) {
             return (180 + alpha)
         }
     }
+}
+
+function sigmoid(z) {
+    return 1 / (1 + Math.exp(-z))
 }
