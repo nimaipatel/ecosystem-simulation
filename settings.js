@@ -22,6 +22,9 @@ stopButton.addEventListener("click", () =>{
     rabbitsInput.value = 0
     foodsInput.value = 0
     initialize()
+    foxesInput.value = ''
+    rabbitsInput.value = ''
+    foodsInput.value = ''
     //console.log(running)
 })
 

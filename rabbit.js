@@ -10,6 +10,5 @@ class Rabbit extends Animal {
     remove(){
         let index = rabbits.indexOf(this)
         rabbits.splice(index, 1)
-        console.log(rabbits)
     }
 }

@@ -55,45 +55,73 @@ class Animal {
             let direction = random(0, 360)
             this.x += this.speed * cos(direction)
             this.y += this.speed * sin(direction)
-            console.log(direction, sin(direction))
         }
     }
 
     findClosest(foods) {
-        let closest = foods[0]
-        for (let i = 0; i < foods.length; i++) {
-            if (dist(this.x, this.y, foods[i].x, foods[i].y) < dist(this.x, this.y, closest.x, closest.y)) {
-                closest = foods[i]
+        if (!foods.length) {
+            return null
+        } else {
+            let closest = foods[0]
+            for (let i = 0; i < foods.length; i++) {
+                if (dist(this.x, this.y, foods[i].x, foods[i].y) < dist(this.x, this.y, closest.x, closest.y)) {
+                    closest = foods[i]
+                }
             }
+            return closest
         }
-        return closest
     }
 
     moveTowards(food) {
         if (this.y > height) {
-            this.y = 5
+            this.y = 0
         } else if (this.y < 0) {
-            this.y = height - 5
+            this.y = height
         } else if (this.x > width) {
-            this.x = 5
+            this.x = 0
         } else if (this.x < 0) {
-            this.x = width - 5
+            this.x = width
         } else {
-            let direction = atan((food.y - this.y) / (food.x - this.x))
-            this.x += this.speed * cos(direction)
-            this.y += this.speed * sin(direction)
+            if (food !== null) {
+                let direction = angleBetween(food.x, food.y, this.x, this.y)
+                this.x += this.speed * cos(direction)
+                this.y += this.speed * sin(direction)
+            } else {
+                this.moveNoThink()
+            }
         }
     }
 
     eat(food) {
-        if (dist(this.x, this.y, food.x, food.y) < 20) {
-            //console.log('eating')
-            if (this.health += food.nutrition > this.maxHealth) {
-                this.health = this.maxHealth
-            } else {
-                this.health += food.nutrition
+        if (food !== null) {
+            if (dist(this.x, this.y, food.x, food.y) < 20) {
+                //console.log('eating')
+                if (this.health += food.nutrition > this.maxHealth) {
+                    this.health = this.maxHealth
+                } else {
+                    this.health += food.nutrition
+                }
+                food.remove()
             }
-            food.remove()
+        }
+    }
+}
+
+function angleBetween(x2, y2, x1, y1) {
+    Y = y2 - y1
+    X = x2 - x1
+    alpha = Math.atan(abs(Y) / abs(X)) * (180 / Math.PI)
+    if( X >= 0 ){
+        if( Y >= 0){
+            return alpha
+        }else{
+            return (-alpha)
+        }
+    }else{
+        if( Y >= 0){
+            return (180 - alpha) 
+        }else{
+            return (180 + alpha)
         }
     }
 }

@@ -41,9 +41,9 @@ function draw() {
 
     for (rabbit of rabbits) {
         rabbit.show()
-        for (food of foods) {
-            rabbit.eat(food)
-        }
+        let food = rabbit.findClosest(foods)
+        rabbit.moveTowards(food)
+        rabbit.eat(food)
     }
 
     for (fox of foxes) {
