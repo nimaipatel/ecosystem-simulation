@@ -8,6 +8,8 @@ let foodsInput = document.getElementById('foods')
 let collapsibe = document.querySelector('.collapsible')
 let more_settings = document.querySelector('.more-settings')
 
+let params = document.querySelectorAll('.sub-input')
+
 collapsibe.addEventListener("click", () => {
     if (more_settings.style.display === 'none') {
         more_settings.style.display = 'grid'
@@ -33,5 +35,6 @@ stopButton.addEventListener("click", () => {
     foodsInput.value = ''
 })
 
+console.log(params)
 
 
