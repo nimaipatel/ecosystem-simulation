@@ -43,13 +43,13 @@ canvas{
     background: rgb(49, 49, 49);
 }
 
-.inputs{
+.main-inputs{
     padding-top: 25px;
     display: grid;
     grid-template-columns: 1fr 2fr;
 }
 
-input{
+.main-input{
     font-family: 'Roboto Mono', monospace;
     background-color: beige;
     font-size: 23px;
@@ -64,12 +64,12 @@ input{
     border-radius: 3px;
 }
 
-input:focus{
+.main-input:focus{
     outline: none;
     background: beige;
 }
 
-label{
+.main-label{
     font-size: 23px;
     height: 50px;
     text-align: right;
@@ -81,6 +81,58 @@ label{
 #start-stop-buttons{
     display: flex;
     justify-content: space-evenly;
+}
+
+.collapsible{
+    margin-top: 0;
+    padding-bottom: 0;
+    background-color: black;
+    color: gray;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 23px;
+    cursor: pointer;
+    width: 300px;
+    height: 50px;
+    border: 0;
+    transition: ease-in-out;
+}
+
+/* .collapsible:hover{
+    
+} */
+
+.collapsible:focus{
+    outline: none;
+}
+
+.more-settings{
+    color: aliceblue;
+    overflow: hidden;
+    display: grid;
+    width: 300px;
+    grid-template-columns: 95px 95px 95px;
+    grid-template-rows: 50px 50px 50px 50px;
+    row-gap: 5px;
+    margin-bottom: 20px;
+    margin-left: 5px;
+    line-height: 10px;
+}
+
+.sub-label{
+    align-items: center;
+    font-size: 10px;
+}
+
+.sub-input{
+    width: 100px;
+    color: transparent;
+    text-shadow: 0 0 0 black;
+    background: beige;
+    border: solid 1px black;
+}
+
+.sub-input:focus{
+    outline: none;
 }
 
 

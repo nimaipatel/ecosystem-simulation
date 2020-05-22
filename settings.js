@@ -5,16 +5,22 @@ let foxesInput = document.getElementById('foxes')
 let rabbitsInput = document.getElementById('rabbits')
 let foodsInput = document.getElementById('foods')
 
-// foxesInput.addEventListener("input", () =>{
-//     if()
-// })
+let collapsibe = document.querySelector('.collapsible')
+let more_settings = document.querySelector('.more-settings')
 
-startButton.addEventListener("click", () =>{
-    initialize()
-    //console.log("ran initializer")
+collapsibe.addEventListener("click", () => {
+    if (more_settings.style.display === 'none') {
+        more_settings.style.display = 'grid'
+    } else {
+        more_settings.style.display = 'none'
+    }
 })
 
-stopButton.addEventListener("click", () =>{
+startButton.addEventListener("click", () => {
+    initialize()
+})
+
+stopButton.addEventListener("click", () => {
     foxes = []
     rabbits = []
     foods = []
@@ -25,7 +31,6 @@ stopButton.addEventListener("click", () =>{
     foxesInput.value = ''
     rabbitsInput.value = ''
     foodsInput.value = ''
-    //console.log(running)
 })
 
 
