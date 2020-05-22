@@ -11,4 +11,28 @@ class Rabbit extends Animal {
         let index = rabbits.indexOf(this)
         rabbits.splice(index, 1)
     }
+
+    checkRadiusOfVisionForFoxes() {
+        let visibleFoxes = []
+        for (let fox of foxes) {
+            if (dist(fox.x, fox.y, this.x, this.y) < this.radiusOfVision) visibleFoxes.push(fox)
+        }
+        return visibleFoxes
+    }
+
+    checkRadiusOfVisionForRabbits() {
+        let visibleRabbits = []
+        for (let rabbit of rabbits) {
+            if (dist(rabbit.x, rabbit.y, this.x, this.y) < this.radiusOfVision) visibleRabbits.push(rabbit)
+        }
+        return visibleRabbits
+    }
+
+    checkRadiusOfVisionForFoods() {
+        let visibleFoods = []
+        for (let food of foods) {
+            if (dist(food.x, food.y, this.x, this.y) < this.radiusOfVision) visibleFoods.push(food)
+        }
+        return visibleFoods
+    }
 }

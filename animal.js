@@ -4,7 +4,7 @@ class Animal {
         this.y = random(5, height - 5)
         this.maxHealth = randomGaussian(80, 5)
         this.health = this.maxHealth * 0.8
-        this.radiusOfVision = randomGaussian(50, 5)
+        this.radiusOfVision = randomGaussian(width/4, 5)
         //console.log(this.health)
     }
 
@@ -26,38 +26,6 @@ class Animal {
         rect(this.x - 25 * (1 - this.health / this.maxHealth), this.y + 10, 25 * this.health / this.maxHealth, 5, 5)
     }
 
-    moveManual() {
-        if (keyIsDown(UP_ARROW)) {
-            //console.log('up')
-            this.y -= this.speed
-        } else if (keyIsDown(DOWN_ARROW)) {
-            //console.log('down')
-            this.y += this.speed
-        } else if (keyIsDown(RIGHT_ARROW)) {
-            //console.log('Working')
-            this.x += this.speed
-        } else if (keyIsDown(LEFT_ARROW)) {
-            //console.log('Working')
-            this.x -= this.speed
-        }
-    }
-
-    moveNoThink() {
-        if (this.y > height) {
-            this.y = 5
-        } else if (this.y < 0) {
-            this.y = height - 5
-        } else if (this.x > width) {
-            this.x = 5
-        } else if (this.x < 0) {
-            this.x = width - 5
-        } else {
-            let direction = random(0, 360)
-            this.x += this.speed * cos(direction)
-            this.y += this.speed * sin(direction)
-        }
-    }
-
     findClosest(foods) {
         if (!foods.length) {
             return null
@@ -72,30 +40,35 @@ class Animal {
         }
     }
 
-    moveTowards(food) {
-        if (this.y > height) {
-            this.y = 0
-        } else if (this.y < 0) {
-            this.y = height
-        } else if (this.x > width) {
-            this.x = 0
-        } else if (this.x < 0) {
-            this.x = width
+    moveNoThink() {
+        let direction = random(0, 360)
+        this.x = (this.x + this.speed * cos(direction) + width) % width
+        this.y = (this.y + this.speed * sin(direction) + height) % height
+    }
+
+    moveAway(predator) {
+        if (predator !== null) {
+            let direction = angleBetween(predator.x, predator.y, this.x, this.y)
+            this.x = (this.x + this.speed * cos(direction + 180) + width) % width
+            this.y = (this.y + this.speed * sin(direction + 180) + height) % height
         } else {
-            if (food !== null) {
-                let direction = angleBetween(food.x, food.y, this.x, this.y)
-                this.x += this.speed * cos(direction)
-                this.y += this.speed * sin(direction)
-            } else {
-                this.moveNoThink()
-            }
+            this.moveNoThink()
+        }
+    }
+
+    moveTowards(food) {
+        if (food !== null) {
+            let direction = angleBetween(food.x, food.y, this.x, this.y)
+            this.x = (this.x + this.speed * cos(direction) + width) % width
+            this.y = (this.y + this.speed * sin(direction) + height) % height
+        } else {
+            this.moveNoThink()
         }
     }
 
     eat(food) {
         if (food !== null) {
             if (dist(this.x, this.y, food.x, food.y) < 20) {
-                //console.log('eating')
                 if (this.health += food.nutrition > this.maxHealth) {
                     this.health = this.maxHealth
                 } else {
@@ -111,16 +84,16 @@ function angleBetween(x2, y2, x1, y1) {
     Y = y2 - y1
     X = x2 - x1
     alpha = Math.atan(abs(Y) / abs(X)) * (180 / Math.PI)
-    if( X >= 0 ){
-        if( Y >= 0){
+    if (X >= 0) {
+        if (Y >= 0) {
             return alpha
-        }else{
+        } else {
             return (-alpha)
         }
-    }else{
-        if( Y >= 0){
-            return (180 - alpha) 
-        }else{
+    } else {
+        if (Y >= 0) {
+            return (180 - alpha)
+        } else {
             return (180 + alpha)
         }
     }

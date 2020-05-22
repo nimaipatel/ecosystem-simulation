@@ -41,15 +41,21 @@ function draw() {
 
     for (rabbit of rabbits) {
         rabbit.show()
-        let food = rabbit.findClosest(foods)
-        rabbit.moveTowards(food)
-        rabbit.eat(food)
+        if(rabbit.checkRadiusOfVisionForFoxes.length === 0){
+            let food = rabbit.findClosest(rabbit.checkRadiusOfVisionForFoods())
+            rabbit.moveTowards(food)
+            rabbit.eat(food)
+        }else{
+        let predator = rabbit.findClosest(rabbit.checkRadiusOfVisionForFoxes())
+        rabbit.moveAway(predator)
+        }
     }
 
     for (fox of foxes) {
         fox.show()
-        let prey = fox.findClosest(rabbits)
+        let prey = fox.findClosest(fox.checkRadiusOfVisionForRabbits())
         fox.moveTowards(prey)
         fox.eat(prey)
     }
+
 }
