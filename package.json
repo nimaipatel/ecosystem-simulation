@@ -1,0 +1,22 @@
+{
+  "name": "ecosystem-simulation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "simulation.js",
+  "scripts": {
+    "deploy": "gh-pages -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nimainimaii/EcosystemSimulation.git"
+  },
+  "author": "Nimai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nimainimaii/EcosystemSimulation/issues"
+  },
+  "homepage": "https://github.com/nimainimaii/Ecosystem-Simulation",
+  "dependencies": {
+    "gh-pages": "^2.2.0"
+  }
+}
