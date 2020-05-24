@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div id="sketch"></div>
+        <div id="controls">
+            <div id="settings">
+                <div class="main-inputs">
+                    <label for="foxes" class="main-label">Foxes</label>
+                    <input type="text" id="foxes" class="main-input">
+                    <label for="rabbits" class="main-label">Rabbits</label>
+                    <input type="text" id="rabbits" class="main-input">
+                    <label for="foods" class="main-label">Carrots</label>
+                    <input type="text" id="foods" class="main-input">
+                </div>
+                <button type="button" class="collapsible">More Settings</button>
+                <div class="more-settings">
+
+                    <div></div>
+                    <div class="sub-heading">Foxes</div>
+                    <div class="sub-heading">Rabbits</div>
+
+                    <div class="sub-label">Frequency of mating</div>
+                    <input type="text" id="rabbit-freq" class="sub-input">
+                    <input type="text" id="fox-freq" class="sub-input">
+
+                    <div class="sub-label">Number of offsprings</div>
+                    <input type="text" id="rabbit-offsprings" class="sub-input">
+                    <input type="text" id="fox-offsprings" class="sub-input">
+
+                    <div class="sub-label">Mean speed</div>
+                    <input type="text" id="rabbit-speed" class="sub-input">
+                    <input type="text" id="fox-speed" class="sub-input">
+
+                </div>
+                <div id="start-stop-buttons">
+                    <button type="button" class="btn" id="start">Start</button>
+                    <button type="button" class="btn" id="stop">Stop</button>
+                </div>
+            </div>
+            <div id="nn"></div>
+        </div>
+    </div>
+
+    <!-- imports -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.min.js"></script>
+    <script type="text/javascript src=" https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.0.0/math.js"></script>
+
+    <script type="text/javascript" src="settings.js"></script>
+    <script type="text/javascript" src="simulation.js"></script>
+    <script type="text/javascript" src="animal.js"></script>
+    <script type="text/javascript" src="rabbit.js"></script>
+    <script type="text/javascript" src="fox.js"></script>
+    <script type="text/javascript" src="food.js"></script>
+
+    <script type="text/javascript" src="neuralnetwork/matrix.js"></script>
+    <script type="text/javascript" src="neuralnetwork/neuralnetwork.js"></script>
+
+</body>
+
+</html>
