@@ -113,7 +113,7 @@ canvas{
     margin-right: 10px;
     margin-top: 25px;
     width: 300px;
-    display: grid;
+    display: none;
     grid-template-columns: 90px 90px 90px;
     grid-template-rows: 50px 50px 50px 50px;
     row-gap: 5px;
