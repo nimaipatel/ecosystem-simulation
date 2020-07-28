@@ -2,19 +2,21 @@ let foxes = []
 let rabbits = []
 let foods = []
 
+//comment added
+
 function setup() {
     angleMode(DEGREES)
     rectMode(CENTER)
     colorMode(HSB, 360, 100, 100)
     frameRate(10)
-    let canvas = createCanvas(windowWidth - 300, windowHeight);
-    canvas.parent('sketch')
+    let canvas = createCanvas(windowWidth - 300, windowHeight)
+    canvas.parent("sketch")
     //initialize()
-    console.log('ran setup')
+    console.log("ran setup")
 }
 
 function initialize() {
-    console.log('starting init')
+    console.log("starting init")
     let numberOfFoxes = foxesInput.value
     let numberOfRabbits = rabbitsInput.value
     let numberOfFoods = foodsInput.value
@@ -28,12 +30,12 @@ function initialize() {
     for (let i = 0; i < numberOfFoods; i++) {
         foods[i] = new Food()
     }
-    console.log('completed init')
+    console.log("completed init")
 }
 
 function draw() {
     //console.log(frameRate())
-    background(120, 70, 70);
+    background(120, 70, 70)
 
     for (food of foods) {
         food.show()
@@ -68,7 +70,6 @@ function draw() {
         fox.moveTowards(prey)
         fox.eat(prey)
         if (fox.timeSinceMated > 1000) {
-
             let mate = fox.findClosest(fox.checkRadiusOfVisionForFoxes())
             if (mate !== null) {
                 fox.moveTowards(mate)
@@ -76,5 +77,5 @@ function draw() {
             }
         }
     }
-
 }
+
