@@ -17,6 +17,6 @@
   },
   "homepage": "https://nimainimaii.github.io/projects/Ecosystem-Simulation",
   "dependencies": {
-    "gh-pages": "^2.2.0"
+    "gh-pages": "^6.3.0"
   }
 }
